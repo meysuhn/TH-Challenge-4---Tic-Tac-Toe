@@ -111,6 +111,27 @@ h1 {
   #player2.active {
     background: #3688C3; }
 
+.playerNames {
+    width: 100%;
+    margin: 0;
+    padding:0;
+    position: absolute;
+    display: block;
+    text-align: center;
+}
+
+#playerNames1 {
+    display: inline-block;
+    float: left;
+    margin-left: 2.5%;
+}
+
+#playerNames2{
+    display: inline-block;
+    float: right;
+    margin-right: 2.5%;
+}
+
 .boxes {
   width: 480px;
   margin: 3em auto 0; }
@@ -137,3 +158,55 @@ h1 {
     .boxes .box-filled-2 {
       background-color: #3688C3;
       background-image: url(../img/x.svg); }
+
+
+/* my stuff
+.playerNames {
+    position: absolute;
+    top: 1rem;
+    width: 35%;
+    padding: 1.25em 0 1em;
+}
+*/
+
+
+.col {
+    display: inline-block;
+    width: 20%;
+    vertical-align: top;
+    padding-left: 5em;
+    padding-right: 5em;
+    /* background: rgba(217, 228, 234, .5); */
+
+}
+
+ .select{
+    border-color: #5e97b0;
+    margin-bottom: 1.125em;
+    border: 2px solid #c1deeb;
+    outline: none;
+    width: 101%;
+
+}
+
+.input {
+    border-color: #5e97b0;
+    margin-bottom: 1.125em;
+    border: 2px solid #c1deeb;
+    outline: none;
+    width: 90%;
+}
+
+/*
+.board {
+    display: inline;
+    float: right;
+    width: 20%;
+    vertical-align: top;
+    padding-left: 5em;
+    padding-right: 5em;
+    text-align: center;
+    /* background: rgba(217, 228, 234, .5);
+
+}
+*/

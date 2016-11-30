@@ -1,11 +1,21 @@
 
 
-// (1) When the page loads, the startup screen should appear. Use the tictactoe-01-start.png mockup, and the start.txt HTML snippet to guide you.
+
+<div class= "board">
+    <div class = "board">
+        <p>Player 1</p>
+    </div>
+    <div class = "board">
+        <p>Player 2</p>
+    </div>
+</div>
+
+// (1) DONE - When the page loads, the startup screen should appear. Use the tictactoe-01-start.png mockup, and the start.txt HTML snippet to guide you.
 
 //remove the board related html and insert the start.txt html
     //on new game click load in the game html.
 
-// (2) Add programming, so that when the player clicks the start button the start screen disappears, the board appears, and the game begins. Use the tictactoe-02-inprogress.png mockup, and the board.txt HTML snippet to guide you.
+// (2) DONE - Add programming, so that when the player clicks the start button the start screen disappears, the board appears, and the game begins. Use the tictactoe-02-inprogress.png mockup, and the board.txt HTML snippet to guide you.
 
     // Let a player add their name before the game starts
     // Name appears while the game is playing
@@ -14,7 +24,7 @@
 
         //     Play alternates between X and O.
 
-        //     The current player is indicated at the top of the page -- the box with the symbol O or X is highlighted for the current player. You can do this by simply adding the class .active to the proper list item in the HTML. For example, if it's player one's turn, the HTML should look like this: <li class="players active" id="player1">
+        // DONE -   The current player is indicated at the top of the page -- the box with the symbol O or X is highlighted for the current player. You can do this by simply adding the class .active to the proper list item in the HTML. For example, if it's player one's turn, the HTML should look like this: <li class="players active" id="player1">
 
         // DONE -     When the current player mouses over an empty square on the board, it's symbol the X or O should appear on the square. You can do this using the x.svg or o.svg graphics (hint use JavaScript to set the background-image property for that box.)
 
