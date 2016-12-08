@@ -4,136 +4,142 @@
 
 (function () {
 
-//document.getElementById("startButton").disabled = true;
-var player1Name; //to be available in global scope. Used by multiple functions.
-var player2Name;
-
-var start = document.getElementById("start");
-var board = document.getElementById("board");
-board.style.display = "none"; // set board original display to none.
-document.getElementById("startButton").addEventListener("click", getName);
-document.getElementById("startButton").addEventListener("click", allowStart);
-
-function viewSwitch(){
-    start.style.display = "none";
-    board.style.display = "block";
-}
 
 
-function getName() {
-        player1Name = document.getElementById("nameInput").value;
-        console.log(player1Name);
-        document.getElementById("playerNames1").innerHTML = player1Name;
-}
+// var player1Name = ""; //to be available in global scope. Used by multiple functions.
+// var player2Name = "";
+//
+// var start = document.getElementById("start"); //start screen
+// var board = document.getElementById("board"); //board screen
+// board.style.display = "none"; // set board original display to none on load.
+// var player2Input = document.getElementById("nameInput2");
+// player2Input.hidden = true; //hide player 2 name input on load
+//
+//
+//
+// function viewSwitch(){ //hide board on load, show start screen
+//     start.style.display = "none";
+//     board.style.display = "block";
+// }
 
-
-//check if Player 1 name is input, and a player 2 selected. Display and remove error messages as required.
-function allowStart() {
-    player2Name = document.getElementById("player2Select").value;
-    if ((player2Name !== "Select_opponent:") && (player1Name.length > 0)){
-        viewSwitch();
-    } else {
-        if (player2Name === "Select_opponent:") {
-            document.getElementById("player2Error").innerHTML = "Please select opponent";
-            document.getElementById("player2Error").style.color = '#8B0000';
-
-        } else if (player2Name !== "Select_opponent:") {
-            document.getElementById("player2Error").innerHTML = "";
-        }
-        if (player1Name.length === 0) {
-            document.getElementById("player1Error").innerHTML = "Please enter your name";
-            document.getElementById("player1Error").style.color = '#8B0000';
-        } else if (player1Name.length > 0) {
-            document.getElementById("player1Error").innerHTML = "";
-        }
-
-    }
-}
-
-
-
-
-
-
-var player1 = document.getElementById("player1");
-var player2 = document.getElementById("player2");
-var player1Boxes = [];
-var player2Boxes = [];
-
-var classToAdd = " "+"box-filled-1";  // Sets initial value to Player1 //MUST HAVE A SPACE BEFORE THE CLASS NAME AS ADDING A CLASS TO AN ELEMENT WITH AN EXISTING CLASS REQUIRES THIS, HENCE THE " ".
-var hoverImage = "url('img/o.svg')"; // Sets initial value to Player1
 
 /////////////////
-//To fix up when I figure out how to toggle between players
-function whichPlayer(){ //this provides value for hover and click functions. Needs fixing up for gameplay, this is a temp measure.
+// Start Screen
+/////////////////
 
-    if (player1.classList.contains('active')) { //switch players
-        classToAdd = " "+"box-filled-1";
-        hoverImage = "url('img/o.svg')";
+// document.getElementById("start").onchange=function() {
+//     player2NameSelect = document.getElementById("player2Select").value;
+//     if (player2NameSelect === "Human") {
+//         player2Input.hidden = false;
+//         player2Name = document.getElementById("nameInput2").value;
+//     } else {
+//         player2Input.hidden = true;
+//         player2Name = "Computer";
+//     }
+//     player1Name = document.getElementById("nameInput1").value;
+//     document.getElementById("playerNames1").innerHTML = "Player 1:" +"   "+player1Name;
+//     document.getElementById("playerNames2").innerHTML = "Player 2:" +"   "+player2Name;
+//
+// };
+//
+//
+// //check if Player 1 name is input, and a player 2 selected. Display and remove error messages as required.
+// document.getElementById("startButton").onclick=function() {
+//     player2Name = document.getElementById("player2Select").value;
+//     if ((player2Name !== "Select_opponent:") && (player1Name.length > 0)){
+//         viewSwitch();
+//     } else {
+//         if (player2Name === "Select_opponent:") {
+//             document.getElementById("player2Error").innerHTML = "Please select opponent";
+//             document.getElementById("player2Error").style.color = '#8B0000';
+//
+//         } else if (player2Name !== "Select_opponent:") {
+//             document.getElementById("player2Error").innerHTML = "";
+//         }
+//         if (player1Name.length === 0) {
+//             document.getElementById("player1Error").innerHTML = "Please enter your name";
+//             document.getElementById("player1Error").style.color = '#8B0000';
+//         } else if (player1Name.length > 0) {
+//             document.getElementById("player1Error").innerHTML = "";
+//         }
+//     }
+// };
 
-    } else if (player2.classList.contains('active')) { //switch players
-        classToAdd = " "+"box-filled-2";
-        hoverImage = "url('img/x.svg')";
+
+/////////////
+// Board
+/////////////
+
+
+var player1 = document.getElementById("player1"); //this is the header player badge
+var player2 = document.getElementById("player2"); //this is the header player badge
+var classToAdd = " "+"box-filled-1";  // Sets initial value to Player1
+    //This sets the colour and image on the boxes. See CSS file for details.
+    //MUST HAVE A SPACE BEFORE THE CLASS NAME AS ADDING A CLASS TO AN ELEMENT WITH AN EXISTING CLASS REQUIRES THIS, HENCE THE " ".
+
+var hoverImage = "url('img/o.svg')"; // Determines which hover image is displayed. Initial value set to Player1
+var boxUl = document.getElementById("allBoxes"); //The 9 game boxes
+var elementMouseIsOver; // holds the box that cursor is over
+
+
+
+
+function cursorLocation(event) { // Establish which box mouse is over
+    var x = event.clientX; //capture x & y coordinates of mouse cursor
+    var y = event.clientY;
+    elementMouseIsOver = document.elementFromPoint(x, y); //establish which element mouse is over and store as a temp variable
+    console.log(elementMouseIsOver);
+    hover();
+}
+
+
+function hover() { //hover player image on empty box
+    if ((elementMouseIsOver.classList.contains('box-filled-1')) || (elementMouseIsOver.classList.contains('box-filled-2'))) { //don't allow hover if box has already been selected (i.e. if it already contains one of the two classes)
+    //do nothing here. Hover not to take place is box already taken.
+    } else {
+        elementMouseIsOver.style.backgroundImage = hoverImage;
+        elementMouseIsOver.onmouseout=function(){
+            elementMouseIsOver.style.backgroundImage = ""; //remove background image when no longer hovering.
+            };
     }
-
 }
 
 
-////////////////
+function switchPlayer(){ // switch players after box selection
+    console.log("switchPlayer has fired");
+    if ((elementMouseIsOver.classList.contains('box-filled-1')) || (elementMouseIsOver.classList.contains('box-filled-2'))) {
+        //don't allow player switch if box has already been selected
+    } else {
+        if (player1.classList.contains("active")) { //switch players
+            classToAdd = " "+"box-filled-1"; //marks a box as taken by a player
+            elementMouseIsOver.className += classToAdd;
+            hoverImage = "url('img/x.svg')"; //this is backwards, I can't figure out why it needs to be that way.
+            player1.classList.remove("active");
+            player2.classList.add("active");
 
-
-function currentPlayer(){
-    //orange to start as active. orange is player 1.
-    //change in active status when array lengthincreases by one?
-    //quickly review fcc arrays
-
-
-    //two arrays to store index numbers of their clicked items
-        //maybe add a pish method to the hoverAndClick function that pushes to arrays?
-
-
-    //Programming to say when someone has won.
-
-
-}
-
-
-
-var boxUl = document.getElementById("allBoxes");
-boxUl.addEventListener("mouseover", hoverAndClick);
-//boxUl.addEventListener("click", boxClick);
-var elementMouseIsOver;
-
-    //check if box is already filled. If not, allow hovering. If box clicked, add necessary players' class.
-    function hoverAndClick(event) {
-        var x = event.clientX; //capture x & y coordinates of mouse cursor
-        var y = event.clientY;
-        elementMouseIsOver = document.elementFromPoint(x, y); //establish which element mouse is over
-        if (!elementMouseIsOver.classList.contains('box-filled-2' || 'box-filled-1')) { //to only run if the box is not already checked.
-            console.log("no class");
-            elementMouseIsOver.style.backgroundImage = hoverImage;
-
-
-            //adapt the the above to put something here which only allows the below to fire if clicked on an element without 'box-filled-2' || 'box-filled-1'
-            elementMouseIsOver.onclick=function(){
-                elementMouseIsOver.className += classToAdd;
-
-                if (player1.classList.contains("active")) { //switch players
-                    player1.classList.remove("active");
-                    player2.classList.add("active");
-
-                } else if (player2.classList.contains("active")) { //switch players
-
-                    player2.classList.remove("active");
-                    player1.classList.add("active");
-                }
-                whichPlayer(); //change hoverImage and classToAdd
-            };
-            elementMouseIsOver.onmouseout=function(){
-                elementMouseIsOver.style.backgroundImage = ""; //remove background image when no longer hovering.
-            };
+        } else if (player2.classList.contains("active")) { //switch players
+            classToAdd = " "+"box-filled-2";
+            elementMouseIsOver.className += classToAdd;
+            hoverImage = "url('img/o.svg')"; //this is backwards, I can't figure out why it needs to be that way.
+            player2.classList.remove("active");
+            player1.classList.add("active");
         }
-        // still some bugs here. If a player clicks on an already clicked box the player state switches.
-            // may have to fix this with array length values
+    }
+}
 
-}}());
+
+//////////////
+// Wiring
+//////////////
+
+
+boxUl.addEventListener("mouseover", cursorLocation);
+boxUl.addEventListener("click", switchPlayer);
+
+
+
+
+
+
+
+}());

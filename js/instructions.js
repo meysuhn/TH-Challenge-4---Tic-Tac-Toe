@@ -1,6 +1,117 @@
 
 
 
+//check if box is already filled. If not, allow hovering. If box clicked, add necessary players' class.
+function hoverAndClick(event) {
+    var x = event.clientX; //capture x & y coordinates of mouse cursor
+    var y = event.clientY;
+    elementMouseIsOver = document.elementFromPoint(x, y); //establish which element mouse is over
+
+    if (elementMouseIsOver.classList.contains('box-filled-2' || 'box-filled-1')) { //to only run if the box is not already checked.
+    } else {
+            console.log("no class");
+            //HOVER IMAGE AND REMOVE HOVER IMAGE
+            elementMouseIsOver.style.backgroundImage = hoverImage;
+            elementMouseIsOver.onmouseout=function(){
+                elementMouseIsOver.style.backgroundImage = ""; //remove background image when no longer hovering.
+                };
+            }
+    if (elementMouseIsOver.classList.contains('box-filled-2' || 'box-filled-1')) { //to only run if the box is not already checked.
+    } else {
+
+
+    }
+
+
+
+
+
+
+
+//adapt the the above to put something here which only allows the below to fire if clicked on an element without 'box-filled-2' || 'box-filled-1'
+elementMouseIsOver.onclick=function(){
+    elementMouseIsOver.className += classToAdd;
+
+    if (player1.classList.contains("active")) { //switch players
+        player1.classList.remove("active");
+        player2.classList.add("active");
+
+    } else if (player2.classList.contains("active")) { //switch players
+
+        player2.classList.remove("active");
+        player1.classList.add("active");
+    }
+    whichPlayer(); //change hoverImage and classToAdd
+};
+elementMouseIsOver.onmouseout=function(){
+    elementMouseIsOver.style.backgroundImage = ""; //remove background image when no longer hovering.
+};
+}
+
+
+
+
+    // if (player2Name === "Human") {
+    // var player2select = document.getElementById("hhhhh");
+    // var human2NameInput = document.createElement("input"); //create input element
+    // human2NameInput.type = "text"; //set input type attribute
+    // human2NameInput.placeholder = "Player 2 Name..."; //add placeholder attribute
+    // human2NameInput.id = "human2Name player2Select"; //add id to input element
+    // player2select.appendChild(human2NameInput); //append the newly formed input variable to the form variable holding the first fieldset.
+
+    //this needs wiring up.
+        //and fix names up (variables, ids etc)
+        // could I hard code in and just hide / show as required. Probably tidier.
+//}
+
+
+// function setNames () { //Get player name inputs and set names on board
+//     player2NameSelect = document.getElementById("player2Select").value;
+//     if (player2NameSelect === "Human") {
+//         player2Input.hidden = false;
+//         player2Name = document.getElementById("nameInput1").value;
+//     } else {
+//         player2Input.hidden = true;
+//         player2Name = "Computer";
+//     }
+//     player1Name = document.getElementById("nameInput1").value;
+//     document.getElementById("playerNames1").innerHTML = "Player 1:" +"   "+player1Name;
+//     document.getElementById("playerNames2").innerHTML = "Player 2:" +"   "+player2Name;
+// }
+
+
+
+// function allowStart() {
+//
+//     player2Name = document.getElementById("player2Select").value;
+//     if ((player2Name !== "Select_opponent:") && (player1Name.length > 0)){
+//         viewSwitch();
+//     } else {
+//         if (player2Name === "Select_opponent:") {
+//             document.getElementById("player2Error").innerHTML = "Please select opponent";
+//             document.getElementById("player2Error").style.color = '#8B0000';
+//
+//         } else if (player2Name !== "Select_opponent:") {
+//             document.getElementById("player2Error").innerHTML = "";
+//         }
+//         if (player1Name.length === 0) {
+//             document.getElementById("player1Error").innerHTML = "Please enter your name";
+//             document.getElementById("player1Error").style.color = '#8B0000';
+//         } else if (player1Name.length > 0) {
+//             document.getElementById("player1Error").innerHTML = "";
+//         }
+//     }
+// }
+
+//////////////////////////////
+// Wiring
+//////////////////////////////
+
+//document.getElementById("startButton").addEventListener("click", allowStart);
+//document.getElementById("player2Select").addEventListener("change", setNames);
+
+
+
 <div class= "board">
     <div class = "board">
         <p>Player 1</p>
