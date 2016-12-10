@@ -9,7 +9,7 @@
 </head>
 <body>
 
-	<!-- <div class="screen screen-start" id="start">
+	<div class="screen screen-start" id="start">
 	  <header>
 	    <h1>Tic Tac Toe</h1>
 		<a href="#" id="startButton" class="button">Start game</a>
@@ -22,7 +22,7 @@
 				<div id = "hhhhh" class = "secondary col">
 					<label for="opponent">Player 2</label>
 					<select id = "player2Select" class="select" name="opponent">
-					  <option value="Select_opponent:">Select opponent:</option>
+					  <option id="ttt" value="Select_opponent:">Select opponent:</option>
 			          <option value="Human">Human</option>
 			          <option value="Computer">Computer</option>
 				  </select>
@@ -31,7 +31,7 @@
 				</div>
 			</div>
 	  </header>
-	</div> -->
+	</div>
 
 
 	<div class="board" id="board">
@@ -63,6 +63,17 @@
     <li class="box" id="box1c"></li>
   </ul>
 </div>
+
+<div class="screen screen-win" id="finish">
+  <header>
+    <h1>Tic Tac Toe</h1>
+    <p class="message"></p>
+    <a href="#" class="button" id="newGame">New game</a>
+  </header>
+</div>
+
+
+
 <script src="js/script.js"></script>
 </body>
 </html>

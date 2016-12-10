@@ -1,5 +1,69 @@
 
 
+// var myBoxClasses1a = document.getElementById("box1a").classList;
+// if (myBoxClasses1a.contains("box-filled-1")) {
+// myBoxClasses1a.remove("box-filled-1");
+// }
+// if (myBoxClasses1a.contains("box-filled-2")) {
+// myBoxClasses1a.remove("box-filled-2");
+// }
+// var myBoxClasses2a = document.getElementById("box2a").classList;
+// if (myBoxClasses2a.contains("box-filled-1")) {
+// myBoxClasses2a.remove("box-filled-1");
+// }
+// if (myBoxClasses2a.contains("box-filled-2")) {
+// myBoxClasses2a.remove("box-filled-2");
+// }
+// var myBoxClasses3a = document.getElementById("box3a").classList;
+// if (myBoxClasses3a.contains("box-filled-1")) {
+// myBoxClasses3a.remove("box-filled-1");
+// }
+// if (myBoxClasses3a.contains("box-filled-2")) {
+// myBoxClasses3a.remove("box-filled-2");
+// }
+// var myBoxClasses1b = document.getElementById("box1b").classList;
+// if (myBoxClasses1b.contains("box-filled-1")) {
+// myBoxClasses1b.remove("box-filled-1");
+// }
+// if (myBoxClasses1b.contains("box-filled-2")) {
+// myBoxClasses1b.remove("box-filled-2");
+// }
+// var myBoxClasses2b = document.getElementById("box2b").classList;
+// if (myBoxClasses2b.contains("box-filled-1")) {
+// myBoxClasses2b.remove("box-filled-1");
+// }
+// if (myBoxClasses2b.contains("box-filled-2")) {
+// myBoxClasses2b.remove("box-filled-2");
+// }
+// var myBoxClasses3b = document.getElementById("box3b").classList;
+// if (myBoxClasses3b.contains("box-filled-1")) {
+// myBoxClasses3b.remove("box-filled-1");
+// }
+// if (myBoxClasses3b.contains("box-filled-2")) {
+// myBoxClasses3b.remove("box-filled-2");
+// }
+// var myBoxClasses1c = document.getElementById("box1c").classList;
+// if (myBoxClasses1c.contains("box-filled-1")) {
+// myBoxClasses1c.remove("box-filled-1");
+// }
+// if (myBoxClasses1c.contains("box-filled-2")) {
+// myBoxClasses1c.remove("box-filled-2");
+// }
+// var myBoxClasses2c = document.getElementById("box2c").classList;
+// if (myBoxClasses2c.contains("box-filled-1")) {
+// myBoxClasses2c.remove("box-filled-1");
+// }
+// if (myBoxClasses2c.contains("box-filled-2")) {
+// myBoxClasses2c.remove("box-filled-2");
+// }
+// var myBoxClasses3c = document.getElementById("box3c").classList;
+// if (myBoxClasses3c.contains("box-filled-1")) {
+// myBoxClasses3c.remove("box-filled-1");
+// }
+// if (myBoxClasses3c.contains("box-filled-2")) {
+// myBoxClasses3c.remove("box-filled-2");
+// }
+
 
 //check if box is already filled. If not, allow hovering. If box clicked, add necessary players' class.
 function hoverAndClick(event) {

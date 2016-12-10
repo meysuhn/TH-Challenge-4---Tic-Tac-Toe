@@ -6,70 +6,69 @@
 
 
 
-// var player1Name = ""; //to be available in global scope. Used by multiple functions.
-// var player2Name = "";
-//
-// var start = document.getElementById("start"); //start screen
-// var board = document.getElementById("board"); //board screen
-// board.style.display = "none"; // set board original display to none on load.
-// var player2Input = document.getElementById("nameInput2");
-// player2Input.hidden = true; //hide player 2 name input on load
-//
-//
-//
-// function viewSwitch(){ //hide board on load, show start screen
-//     start.style.display = "none";
-//     board.style.display = "block";
-// }
+var player1Name = ""; //to be available in global scope. Used by multiple functions.
+var player2Name = "";
+
+var start = document.getElementById("start"); //start screen
+var board = document.getElementById("board"); //board screen
+var finish = document.getElementById("finish"); //board screen
+board.style.display = "none"; // set board original display to none on load.
+var player2Input = document.getElementById("nameInput2");
+player2Input.hidden = true; //hide player 2 name input on load
+
+finish.style.display = "none"; // hide finish board on load.
+function viewSwitch(){ //hide board on load, show start screen
+    start.style.display = "none";
+    board.style.display = "block";
+}
 
 
-/////////////////
-// Start Screen
-/////////////////
+///////////////
+//Start Screen
+///////////////
 
-// document.getElementById("start").onchange=function() {
-//     player2NameSelect = document.getElementById("player2Select").value;
-//     if (player2NameSelect === "Human") {
-//         player2Input.hidden = false;
-//         player2Name = document.getElementById("nameInput2").value;
-//     } else {
-//         player2Input.hidden = true;
-//         player2Name = "Computer";
-//     }
-//     player1Name = document.getElementById("nameInput1").value;
-//     document.getElementById("playerNames1").innerHTML = "Player 1:" +"   "+player1Name;
-//     document.getElementById("playerNames2").innerHTML = "Player 2:" +"   "+player2Name;
-//
-// };
-//
-//
-// //check if Player 1 name is input, and a player 2 selected. Display and remove error messages as required.
-// document.getElementById("startButton").onclick=function() {
-//     player2Name = document.getElementById("player2Select").value;
-//     if ((player2Name !== "Select_opponent:") && (player1Name.length > 0)){
-//         viewSwitch();
-//     } else {
-//         if (player2Name === "Select_opponent:") {
-//             document.getElementById("player2Error").innerHTML = "Please select opponent";
-//             document.getElementById("player2Error").style.color = '#8B0000';
-//
-//         } else if (player2Name !== "Select_opponent:") {
-//             document.getElementById("player2Error").innerHTML = "";
-//         }
-//         if (player1Name.length === 0) {
-//             document.getElementById("player1Error").innerHTML = "Please enter your name";
-//             document.getElementById("player1Error").style.color = '#8B0000';
-//         } else if (player1Name.length > 0) {
-//             document.getElementById("player1Error").innerHTML = "";
-//         }
-//     }
-// };
+document.getElementById("start").onchange=function() {
+    player2NameSelect = document.getElementById("player2Select").value;
+    if (player2NameSelect === "Human") {
+        player2Input.hidden = false;
+        player2Name = document.getElementById("nameInput2").value;
+    } else {
+        player2Input.hidden = true;
+        player2Name = "Computer";
+    }
+    player1Name = document.getElementById("nameInput1").value;
+    document.getElementById("playerNames1").innerHTML = "Player 1:" +"   "+player1Name;
+    document.getElementById("playerNames2").innerHTML = "Player 2:" +"   "+player2Name;
+
+};
+
+
+//check if Player 1 name is input, and a player 2 selected. Display and remove error messages as required.
+document.getElementById("startButton").onclick=function() {
+    player2Name = document.getElementById("player2Select").value;
+    if ((player2Name !== "Select_opponent:") && (player1Name.length > 0)){
+        viewSwitch();
+    } else {
+        if (player2Name === "Select_opponent:") {
+            document.getElementById("player2Error").innerHTML = "Please select opponent";
+            document.getElementById("player2Error").style.color = '#8B0000';
+
+        } else if (player2Name !== "Select_opponent:") {
+            document.getElementById("player2Error").innerHTML = "";
+        }
+        if (player1Name.length === 0) {
+            document.getElementById("player1Error").innerHTML = "Please enter your name";
+            document.getElementById("player1Error").style.color = '#8B0000';
+        } else if (player1Name.length > 0) {
+            document.getElementById("player1Error").innerHTML = "";
+        }
+    }
+};
 
 
 /////////////
 // Board
 /////////////
-
 
 var player1 = document.getElementById("player1"); //this is the header player badge
 var player2 = document.getElementById("player2"); //this is the header player badge
@@ -135,24 +134,7 @@ function selectAndSwitch(){ // make box selection and switch players
 }
 
 
-
-//////////////
-// Gameplay
-//////////////
-
-// Need to track which box belongs to which player
-
-// Need to determine when a victory condition is achieved.
-
-// Victory conditions
-
-
-
-
-
-
 // run this function after each time an item is pushed to an array.
-
 function victoryCondition() {
     if (((player1Boxes.includes("box1a")) && (player1Boxes.includes("box2a")) && (player1Boxes.includes("box3a"))) ||
     ((player1Boxes.includes("box1b")) && (player1Boxes.includes("box2b")) && (player1Boxes.includes("box3b"))) ||
@@ -169,6 +151,13 @@ function victoryCondition() {
         // 2 diagonals in row (1a, 2b, 3c OR 1c, 2b, 3a)
 
         console.log("Player 1 wins!");
+        board.style.display = "none";
+        finish.style.display = "block";
+        document.getElementsByClassName("message")[0].innerHTML = player1Name +" " + "wins!";
+        document.getElementById("finish").className += " " +"screen-win-one";
+
+
+
     } else if
         (((player2Boxes.includes("box1a")) && (player2Boxes.includes("box2a")) && (player2Boxes.includes("box3a"))) ||
         ((player2Boxes.includes("box1b")) && (player2Boxes.includes("box2b")) && (player2Boxes.includes("box3b"))) ||
@@ -184,13 +173,87 @@ function victoryCondition() {
         ((player2Boxes.includes("box1c")) && (player2Boxes.includes("box2b")) && (player2Boxes.includes("box3a"))) ) {
         // 2 diagonals in row (1a, 2b, 3c OR 1c, 2b, 3a)
         console.log("Player 2 wins!");
+        board.style.display = "none";
+        finish.style.display = "block";
+        document.getElementsByClassName("message")[0].innerHTML = player2Name +" " + "wins!";
+        document.getElementById("finish").className += " " +"screen-win-two";
+
+    }
+    // if all 9 boxes filled and no victory condition met, it's a tie:
+    else if (player1Boxes.length + player2Boxes.length === 9) {
+        board.style.display = "none";
+        finish.style.display = "block";
+        document.getElementsByClassName("message")[0].innerHTML = "It's a draw!";
+        document.getElementById("finish").className += " " +"screen-win-tie";
     }
 
+//do the victory / tie classes also need to be removed in the reset?!
+    //yes, victory conditions not working properly after a couple of games
+    //and player 1 needs to start first on second go.
 
 }
 
 
+document.getElementById("newGame").onclick=function() {
 
+    start.style.display = "block";
+    board.style.display = "none";
+    finish.style.display = "none";
+    player1Name = ""; //reset player names
+    player2Name = "";
+    player1Name = document.getElementById("nameInput1").value = "";
+    player2Name = document.getElementById("nameInput2").value = "";
+    player2NameSelect = "Select opponent:";
+
+    var select = document.getElementsByTagName('select');
+    select[0].selectedIndex = 0; //reset drop down menu
+
+    var parent = document.getElementById('allBoxes');
+    var child_nodes = parent.children;
+    console.log(parent.length); //undefined
+    console.log(child_nodes.length); //9
+
+    for (var i = 0; i < child_nodes.length; ++i) {
+      var item = child_nodes[i];
+      if (item.classList.contains("box-filled-1")) {
+      item.classList.remove("box-filled-1");
+      }
+      if (item.classList.contains("box-filled-2")) {
+      item.classList.remove("box-filled-2");
+      }
+    }
+
+
+    if (player2.classList.contains("active")) {
+        player2.classList.remove("active");
+        player1.classList.add("active");
+
+    }
+
+    // reset finish screen classes
+    var finishScreen = document.getElementById("finish");
+    if (finishScreen.classList.contains("screen-win-one")) {
+        finishScreen.classList.remove("screen-win-one");
+    }
+    if (finishScreen.classList.contains("screen-win-two")) {
+        finishScreen.classList.remove("screen-win-two");
+    }
+    if (finishScreen.classList.contains("screen-win-tie")) {
+        finishScreen.classList.remove("screen-win-tie");
+    }
+
+    classToAdd = " "+"box-filled-1";  // Sets initial value to Player1
+
+    hoverImage = "url('img/o.svg')"; // Determines which hover image is displayed. Initial value set to Player1
+
+    player1Boxes = []; //reset player box arrays
+    player2Boxes = [];
+    player2Input.hidden = true; //hide player 2 name input on load
+
+    document.getElementById("player1Error").innerHTML = ""; //clear any start screen error messages present
+    document.getElementById("player2Error").innerHTML = "";
+
+};
 
 //////////////
 // Wiring
