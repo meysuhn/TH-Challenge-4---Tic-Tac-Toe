@@ -160,15 +160,6 @@ h1 {
       background-image: url(../img/x.svg); }
 
 
-/* my stuff
-.playerNames {
-    position: absolute;
-    top: 1rem;
-    width: 35%;
-    padding: 1.25em 0 1em;
-}
-*/
-
 .col {
     display: inline-block;
     width: 20%;
