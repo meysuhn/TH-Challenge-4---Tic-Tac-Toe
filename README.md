@@ -1,4 +1,4 @@
-# Tic-Tac-Toe
+# Tic-Tac-Toe Game
 ## FullStack Tech Degree Project 4
 
 ### Javascript, HTML5, CSS3
